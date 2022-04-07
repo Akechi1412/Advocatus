@@ -1,0 +1,75 @@
+.hero {
+  min-height: 84rem;
+  padding: 60.6rem 0 14rem;
+  margin-top: var(--header-height);
+  background: url(../images/img-hero-bg.jpg) no-repeat center top / cover;
+  &-inner {
+    @include flexbox(space-between, center);
+    padding: 0 10rem;
+  }
+  &-info {
+    color: white;
+    flex: 1;
+    padding-right: 2rem;
+    padding-left: 1.8rem;
+    position: relative;
+    &::before {
+      content: "";
+      @include size(0.2rem, calc(100% - 1rem));
+      background-color: $primary-color;
+      @include absoluteCenter("top");
+      left: 0;
+    }
+  }
+  &-name,
+  &-job {
+    display: block;
+  }
+  &-name {
+    font-family: $secondary-font;
+    font-size: 6.5rem;
+    line-height: calc(0.8);
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+  &-job {
+    font-size: 3.1rem;
+    line-height: calc(36 / 31);
+  }
+  @include maxWidth(1599.98px) {
+    min-height: 70rem;
+    padding: 50rem 0 10rem;
+  }
+  @include maxWidth(991.98px) {
+    min-height: 60rem;
+    padding: 40rem 0 10rem;
+    &-inner {
+      padding: 0 4rem;
+    }
+  }
+  @include maxWidth(767.98px) {
+    padding: 40rem 0 10rem;
+    &-inner {
+      display: block;
+      padding: 0 2rem;
+    }
+    &-info {
+      margin-bottom: 2rem;
+    }
+    &-name {
+      font-size: 5.5rem;
+    }
+    &-job {
+      font-size: 2.6rem;
+    }
+  }
+  @include maxWidth(479.98px) {
+    padding-left: 0;
+    padding-right: 0;
+    min-height: 50rem;
+    padding: 35rem 0 5rem;
+    &-inner {
+      padding: 0;
+    }
+  }
+}

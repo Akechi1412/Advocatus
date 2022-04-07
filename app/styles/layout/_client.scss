@@ -1,0 +1,138 @@
+.client {
+  padding: 7rem 0 10.5rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+    url(../images/img-client-bg.jpg) no-repeat center / cover;
+  &-list {
+    padding-bottom: 4rem;
+    --image-width: 37rem;
+    --image-height: 30rem;
+    --image-mr: 7.5rem;
+  }
+  &-item {
+    padding: 2rem 3rem 0 2rem;
+    width: 100%;
+    &-inner {
+      @include flexbox();
+    }
+    &-image {
+      @include size(var(--image-width), var(--image-height));
+      margin-right: var(--image-mr);
+      flex-shrink: 0;
+      @include hoverEffect(
+        (
+          img-selector: ".client-item-img",
+        )
+      );
+    }
+    &-img {
+      position: relative;
+      object-position: top;
+    }
+    &-content {
+      color: $white-color;
+      position: relative;
+    }
+    &-desc {
+      line-height: calc(31 / 14);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    &-name {
+      font-family: $secondary-font;
+      font-size: 2.1rem;
+      line-height: 1.476;
+      text-transform: capitalize;
+      max-width: 40rem;
+      word-break: break-word;
+    }
+    &-job {
+      line-height: calc(24 / 14);
+      max-width: 35rem;
+      word-break: break-word;
+    }
+    &-quote {
+      position: absolute;
+      left: -4.4rem;
+      top: -0.2rem;
+      height: 2.4rem;
+    }
+  }
+
+  // slick slider
+  &-list {
+    .slick-dots {
+      display: flex !important;
+      position: absolute;
+      bottom: 0;
+      left: calc(var(--image-width) + var(--image-mr));
+    }
+    .slick-dots li:not(:first-child) {
+      margin-left: 0.5rem;
+    }
+    .slick-dots button {
+      font-size: 0;
+      border-radius: 50%;
+      @include size(1rem);
+      background-color: transparent;
+      border: 1px solid $white-color;
+    }
+    .slick-active button {
+      @include size(1.5rem);
+      background-color: $white-color;
+    }
+  }
+  @include maxWidth(1279.98px) {
+    &-list {
+      --image-width: 32rem;
+      --image-height: 26rem;
+    }
+  }
+  @include maxWidth(991.98px) {
+    &-list {
+      --image-width: 21rem;
+      --image-height: 17rem;
+    }
+    &-item {
+      &-desc {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+  @include maxWidth(767.98px) {
+    padding: 5rem 0 8.5rem;
+    &-list {
+      --image-width: 20rem;
+      --image-height: 20rem;
+      .slick-dots {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &-item {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      &-inner {
+        display: block;
+      }
+      &-image {
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 3rem;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      &-image:hover &-img {
+        transform: translate(0, 0);
+      }
+      &-quote {
+        height: 1.6rem;
+        left: -2.8rem;
+        top: 0.2rem;
+      }
+      &-desc {
+        margin-right: -3rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  height: var(--header-height);
+  background-color: $white-color;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  &-navbar {
+    @include flexbox(flex-start, center);
+    height: 100%;
+  }
+  &-logo {
+    display: block;
+  }
+  &-brand {
+    font: 700 2.5rem / 1.8 $secondary-font;
+    color: $black-color;
+    text-transform: uppercase;
+    &::after {
+      content: ".";
+      color: $primary-color;
+    }
+  }
+  &-nav {
+    margin-left: auto;
+    @include flexbox(center, center);
+    &-item {
+      &:not(:first-child) {
+        margin-left: 2.4rem;
+      }
+    }
+    &-link {
+      display: block;
+      color: $black-color;
+      line-height: 3.2;
+      text-transform: uppercase;
+      padding: 0 1rem;
+      border-bottom: 5px solid transparent;
+    }
+    &-link.is-active,
+    &-link:hover {
+      border-bottom-color: $primary-color;
+    }
+  }
+  &-toggle,
+  &-close {
+    display: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    &-icon {
+      font-size: 3rem;
+      font-weight: 400;
+      color: $text-light-color;
+    }
+  }
+  &-close-icon {
+    font-size: 3.6rem;
+    font-weight: 300;
+  }
+  &-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 998;
+    background: rgba($black-color, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  @include maxWidth(991.98px) {
+    &-navbar {
+      @include flexbox(space-between, center);
+    }
+    &-nav {
+      display: block;
+      background-color: $white-color;
+      padding: 5rem 2rem 2rem;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 999;
+      @include size(30rem, 100%);
+      transform: translateX(100%);
+      transition: all 0.4s ease-in-out;
+      &-item:not(:first-child) {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+      &-link {
+        padding: 0;
+        border: none;
+        font-size: 1.6rem;
+      }
+      &-link:hover,
+      &-link:active {
+        color: $primary-color;
+      }
+    }
+    &-nav.is-active {
+      transform: translateX(0);
+    }
+    &-toggle,
+    &-close {
+      display: inline-block;
+    }
+    &-close {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+    }
+    &-overlay.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

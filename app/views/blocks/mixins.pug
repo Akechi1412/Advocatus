@@ -1,0 +1,103 @@
+mixin headerNavItem(data)
+  if !data.href
+    - data.href = "#"
+  li.header-nav-item
+    a.header-nav-link(class=data.activeClass href=data.href)=data.itemName
+
+mixin sectionHeader(data)
+  .section-header(class=data.modifierClass)
+    .section-header-info(data-aos="fade-left")
+      h2.section-header-title(data-aos="fade-left" data-aos-delay="150")=data.title
+      p.section-header-desc(data-aos="fade-left" data-aos-delay="250")=data.desc
+    .section-header-bg
+      span.section-header-number=data.number
+
+mixin aboutHistoryItem(data)
+  li.about-history-item
+    span.about-history-year=data.year
+    p.about-history-desc=data.desc
+
+mixin practiceItem(data)
+  if !data.alt
+    - data.alt = ""
+  li.practice-item
+    .practice-item-icon
+      img.practice-item-img(src=data.src, alt=data.alt)
+    .practice-item-info
+      h3.practice-item-title=data.title
+      p.practice-item-desc=data.desc
+
+mixin attorneyItem(data)
+  if !data.alt
+    - data.alt = ""
+  li.attorney-item
+    .attorney-item-image
+      img.attorney-item-img(src=data.src, alt=data.alt)
+    .attorney-item-info
+      h3.attorney-item-name=data.name
+      h5.attorney-item-job=data.job
+
+mixin clientItem(data)
+  if !data.alt
+    - data.alt = ""
+  .client-item
+    .client-item-inner
+      .client-item-image
+        img.img.client-item-img(src=data.src, alt=data.alt)
+      .client-item-content
+        p.client-item-desc=data.desc
+        p.client-item-name=data.name
+        p.client-item-job=data.job
+        img.client-item-quote(src="./images/img-client-quote.png", alt="")
+
+mixin publicationMeta(data)
+  if !data.comments
+    - data.comments = "25 Comments"
+  if !data.share
+    - data.share = "Share"
+  .publication-meta
+    .public-meta-item
+      i.fas.fa-comments.publication-meta-icon
+      span.publication-meta-text=data.comments
+    .publication-meta-item
+      i.fas.fa-share.publication-meta-icon
+      span.publication-meta-text=data.share
+
+mixin publicationItem(data)
+  if !data.alt
+    - data.alt = ""
+  if !data.href
+    - data.href = "#"
+  li.publication-item
+    a.publication-item-link(href=data.href)
+      .publication-item-image
+        img.publication-item-img(src=data.src, alt=data.alt)
+      .publication-item-content
+        .publication-item-header
+          h4.publication-item-title=data.title
+          .publication-item-info
+            h5.publication-item-author By 
+              span=data.author
+            i.publication-item-date=data.date
+        p.publication-item-desc=data.desc
+        if block
+          block 
+
+mixin faqLeftItem(data)
+  if !data.iconClass
+    - data.iconClass = "fa-plus"
+  .faq-left-item(class=data.activeClass)
+    button.faq-left-btn
+      h4.faq-left-question=data.question
+      i.faq-left-icon.fas(class=data.iconClass)
+    .faq-left-extend
+      p.faq-left-answer=data.answer
+
+mixin footerSocialItem(data)
+  if !data.href
+    - data.href = "#"
+  if !data.iconClass
+    - data.iconClass = "fa-facebook-f"
+  li.footer-social-item
+    a.footer-social-link(href=data.href)
+      i.footer-social-icon.fab(class=data.iconClass)

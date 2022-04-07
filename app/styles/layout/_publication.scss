@@ -1,0 +1,126 @@
+.publication {
+  padding: 7rem 0 10rem;
+  &-list {
+    @include grid(
+      (
+        columns: 3,
+        gutter-x: 3rem,
+      )
+    );
+  }
+  &-item {
+    &-link {
+      display: block;
+      height: 100%;
+      @include flexbox(flex-start, stretch, column);
+    }
+    &-image {
+      @include aspectRatio(
+        (
+          ratio: calc(370 / 300),
+          selector: ".publication-item-img",
+        )
+      );
+    }
+    &-img {
+      object-fit: cover;
+    }
+    &-content {
+      padding: 2.5rem 0;
+      border-bottom: 3px solid $primary-color;
+      flex: 1;
+      @include flexbox(flex-start, stretch, column);
+    }
+    &-header {
+      margin-bottom: 2.5rem;
+    }
+    &-title {
+      font-size: 2.1rem;
+      font-family: $secondary-font;
+      line-height: 1.476;
+      color: $black-color;
+      @include textTruncate();
+    }
+    &-info {
+      @include flexbox(space-between, flex-end);
+      font-size: 1.6rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    &-author {
+      @include textTruncate();
+      span {
+        font-style: normal;
+        color: $black-color;
+      }
+    }
+    &-date {
+      flex-shrink: 0;
+      white-space: nowrap;
+      margin-left: 1.5rem;
+    }
+    &-desc {
+      line-height: calc(31 / 14);
+      margin-bottom: 2.5rem;
+      @include textTruncate(5);
+    }
+  }
+  &-meta {
+    @include flexbox(space-between);
+    margin-top: auto;
+    &-icon {
+      display: inline-block;
+      color: $black-color;
+      margin-right: 0.8rem;
+    }
+    &-text {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      color: $black-color;
+    }
+  }
+  @include maxWidth(1279.98px) {
+    &-item {
+      &-desc {
+        @include textTruncate(3);
+      }
+    }
+  }
+  @include maxWidth(991.98px) {
+    &-item {
+      &-content {
+        padding: 1.5rem 0;
+      }
+      &-header,
+      &-desc {
+        margin-bottom: 1.5em;
+      }
+      &-title {
+        font-size: 1.8rem;
+      }
+      &-info {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  @include maxWidth(767.98px) {
+    padding: 5rem 0 8rem;
+    &-list {
+      @include grid(
+        (
+          columns: 1,
+          gutter-x: 0px,
+          gutter-y: 4rem,
+        )
+      );
+    }
+    &-item {
+      &-link {
+        display: block;
+      }
+      &-content {
+        display: block;
+      }
+    }
+  }
+}

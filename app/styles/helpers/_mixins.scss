@@ -1,0 +1,132 @@
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flexbox(
+  $justify-content: flex-start,
+  $align-items: stretch,
+  $direction: row,
+  $wrap: nowrap,
+  $display: flex
+) {
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-flow: $direction $wrap;
+}
+
+@mixin absoluteCenter($direction: "both") {
+  position: absolute;
+  @if $direction == "left" {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $direction == "top" {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $direction == "both" {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin absoluteFull() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include size(100%);
+}
+
+@mixin maxWidth($bp) {
+  @media screen and (max-width: $bp) {
+    @content;
+  }
+}
+
+@mixin minWidth($bp) {
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin textTruncate($lines: 1, $max-width: 100%) {
+  display: -webkit-box;
+  max-width: $max-width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  white-space: pre-line;
+}
+
+@mixin grid($config: ()) {
+  $config: extend(
+    (
+      columns: 1,
+      gutter-x: 0px,
+      gutter-y: 0px,
+    ),
+    $config
+  );
+  @include flexbox(flex-start, stretch, row, wrap);
+  margin-left: -1 * map-get($config, gutter-x);
+  margin-bottom: -1 * map-get($config, gutter-y);
+  & > * {
+    width: calc(
+      100% / #{map-get($config, columns)} - #{map-get($config, gutter-x)}
+    );
+    margin-left: map-get($config, gutter-x);
+    margin-bottom: map-get($config, gutter-y);
+  }
+}
+
+@mixin aspectRatio($config: ()) {
+  $config: extend(
+    (
+      ratio: 1,
+      selector: "img",
+    ),
+    $config
+  );
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    padding-top: calc(1 / #{map-get($config, ratio)} * 100%);
+  }
+  & > #{map-get($config, selector)} {
+    @include absoluteFull();
+  }
+}
+
+@mixin hoverEffect($config: ()) {
+  $config: extend(
+    (
+      img-selector: "img",
+      translate-x: -2rem,
+      translate-y: -2rem,
+    ),
+    $config
+  );
+  position: relative;
+  &::after {
+    content: "";
+    @include absoluteFull();
+    background-color: $primary-color;
+    z-index: 0;
+  }
+  #{map-get($config, img-selector)} {
+    z-index: 1;
+    transition: all 0.25s linear;
+    will-change: transform;
+  }
+  &:hover {
+    #{map-get($config, img-selector)} {
+      transform: translate(
+        #{map-get($config, translate-x)},
+        #{map-get($config, translate-y)}
+      );
+    }
+  }
+}

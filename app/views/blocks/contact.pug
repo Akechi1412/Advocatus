@@ -1,0 +1,22 @@
+section.contact#contact
+  .container
+    +sectionHeader({
+      modifierClass: "section-header-primary",
+      title: "Feel Free to Contact",
+      desc: "We are regarded as industry leaders in stunning website solutions, focused on delivering unsurpassed user    experiences.",
+      number: "07"
+    })
+    .contact-container
+      form.contact-form(action="javascript:void(0)")
+        .contact-form-group
+          input.contact-form-input(id="contactName" name="name" type="text" placeholder="Enter your name..." required)
+        .contact-form-group
+          input.contact-form-input(id="contactEmail" name="email" type="email" placeholder="Enter your email..." required) 
+        .contact-form-group
+          input.contact-form-input(id="contactPhone" name="phone" type="number" placeholder="Enter your phone..." required)
+        .contact-form-group
+          textarea.contact-form-input(id="contactMessage" name="message" placeholder="Enter your message..." required)
+        button(type="submit").btn.btn-sm.btn-primary Send message
+      .contact-map
+        .contact-map-image
+          img.contact-map-img.img(src="./images/img-contact-map.png" alt="")

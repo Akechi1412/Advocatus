@@ -1,0 +1,87 @@
+.attorney {
+  padding: 7rem 0 9.5rem;
+  &-list {
+    @include grid(
+      (
+        columns: 4,
+        gutter-x: 3rem,
+        gutter-y: 0px,
+      )
+    );
+  }
+  &-item {
+    &-image {
+      @include aspectRatio(
+        (
+          ratio: 0.9,
+          selector: ".attorney-item-img",
+        )
+      );
+    }
+    &-img {
+      object-fit: cover;
+    }
+    &-info {
+      padding-top: 2rem;
+      text-transform: capitalize;
+    }
+    &-name {
+      font-family: $secondary-font;
+      font-size: 2.1rem;
+      line-height: 1.476;
+      color: $black-color;
+    }
+    &-job {
+      line-height: 1.714;
+    }
+  }
+  @include maxWidth(991.98px) {
+    &-list {
+      @include grid(
+        (
+          columns: 2,
+          gutter-x: 3rem,
+          gutter-y: 3rem,
+        )
+      );
+    }
+  }
+  @include maxWidth(767.98px) {
+    padding: 5rem 0 7.5rem;
+  }
+  @include maxWidth(575.98px) {
+    &-list {
+      @include grid(
+        (
+          columns: 4,
+          gutter-x: 3rem,
+          gutter-y: 0px,
+        )
+      );
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin-left: 0rem;
+      scrollbar-color: $primary-color #efefef; // Only custom scrollbar thumb color for firefox browsers
+      &::-webkit-scrollbar {
+        height: 0.5rem;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: #efefef;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $primary-color;
+      }
+    }
+    &-item {
+      width: 80%;
+      flex-shrink: 0;
+      scroll-snap-stop: always;
+      scroll-snap-align: start;
+      padding-bottom: 1rem;
+      &:first-child {
+        margin-left: 0px;
+      }
+    }
+  }
+}

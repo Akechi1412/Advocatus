@@ -1,0 +1,40 @@
+.btn {
+  display: inline-block;
+  padding: 1rem 4.8rem;
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  line-height: calc(31 / 16);
+  border-radius: 10rem;
+  text-transform: capitalize;
+  white-space: nowrap;
+  min-width: 13rem;
+}
+.btn.btn-sm {
+  padding: 1rem 3rem;
+}
+.btn.btn-primary {
+  background-color: $primary-color;
+  color: $black-color;
+}
+
+// Back to top button
+.btn-to-top {
+  display: inline-block;
+  background-color: $primary-color;
+  @include size(4rem, 4rem);
+  @include flexbox(center, center);
+  border-radius: 50%;
+  box-shadow: -0.5rem 0 2rem rgba($box-shadow-color, 0.1);
+  font-size: 1.4rem;
+  color: $white-color;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+}
+.btn-to-top.is-active {
+  opacity: 1;
+  visibility: visible;
+}

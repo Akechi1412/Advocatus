@@ -1,0 +1,80 @@
+.faq {
+  padding: 7rem 0 17rem;
+  background-color: $black-color;
+  &-content {
+    @include flexbox(space-between);
+  }
+  &-left {
+    width: calc(117 / 220 * 100% - 1.7rem);
+  }
+  &-right {
+    width: calc(103 / 220 * 100% - 1.7rem);
+  }
+  &-left {
+    &-item.is-active &-question {
+      color: $primary-color;
+    }
+    &-btn {
+      @include flexbox(space-between, center);
+      background-color: transparent;
+      width: 100%;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid $primary-color;
+    }
+    &-question {
+      font-weight: bold;
+      line-height: 1.6;
+      color: $white-color;
+      text-align: left;
+    }
+    &-icon {
+      color: $white-color;
+      margin-left: 1.5rem;
+    }
+    &-extend {
+      height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease-in-out;
+    }
+    &-answer {
+      background: $primary-color;
+      padding: 2rem;
+      margin-bottom: 1rem;
+      color: $black-color;
+      line-height: 1.6;
+    }
+  }
+  &-right {
+    padding-top: 2rem;
+    &-text {
+      background: $primary-color;
+      color: $black-color;
+      line-height: calc(31 / 14);
+      height: 100%;
+      padding: 3.5rem 4.5rem;
+    }
+  }
+  @include minWidth(768px) {
+    &-left-extend {
+      height: 0 !important;
+    }
+  }
+  @include maxWidth(991.98px) {
+    padding-bottom: 15rem;
+    &-right-text {
+      padding: 2.5rem 3.5rem;
+    }
+  }
+  @include maxWidth(767.98px) {
+    padding: 5rem 0 10rem;
+    &-content {
+      display: block;
+    }
+    &-left {
+      width: 100%;
+    }
+    &-right {
+      display: none;
+    }
+  }
+}

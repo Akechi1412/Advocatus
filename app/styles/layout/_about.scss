@@ -1,0 +1,91 @@
+.about {
+  padding: 7rem 0 8.5rem;
+  &-content {
+    --gutter-x: 3.4rem;
+    --gutter-y: 0px;
+    @include flexbox(flex-start, baseline, row, wrap);
+    margin-left: calc(-1 * var(--gutter-x));
+    margin-bottom: calc(-1 * var(--gutter-y));
+  }
+  &-history,
+  &-expertise {
+    margin-left: var(--gutter-x);
+    margin-bottom: var(--gutter-y);
+  }
+  &-history {
+    width: calc(52.9% - var(--gutter-x));
+  }
+  &-expertise {
+    width: calc(47.1% - var(--gutter-x));
+  }
+  &-title {
+    font: 2.1rem / 1.476 $secondary-font;
+    color: $black-color;
+  }
+  &-history {
+    &-list {
+      margin-top: 2.6rem;
+    }
+    &-item {
+      @include flexbox(flex-start, center);
+      margin-bottom: 3.8rem;
+    }
+    &-year {
+      margin-right: 3rem;
+      margin-top: 0.3rem;
+      font: 700 2.1rem / 1.476 $primary-font;
+      color: $black-color;
+      flex-shrink: 0;
+    }
+    &-year::after {
+      content: "-";
+      margin-left: 0.8rem;
+    }
+    &-desc {
+      font-size: 1.6rem;
+      color: $black-color;
+      line-height: 1.3125;
+    }
+  }
+  &-expertise {
+    &-text {
+      margin-top: 2rem;
+      line-height: 2.214;
+    }
+  }
+  @include maxWidth(991.98px) {
+    &-history {
+      &-item {
+        display: block;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  @include maxWidth(767.98px) {
+    padding: 4.5rem 0 6rem;
+    &-content {
+      --gutter-x: 0px;
+      --gutter-y: 3rem;
+    }
+    &-history,
+    &-expertise {
+      width: 100%;
+    }
+    &-history {
+      &-list {
+        margin-top: 2rem;
+      }
+      &-item {
+        margin-bottom: 2rem;
+      }
+      &-year {
+        margin-top: 0;
+      }
+    }
+    &-expertise {
+      &-text {
+        margin-top: 1.4rem;
+      }
+    }
+  }
+}

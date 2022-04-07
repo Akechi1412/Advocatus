@@ -1,0 +1,49 @@
+.footer {
+  background-color: $black-color;
+  &-inner {
+    min-height: 8rem;
+    padding: 1rem 0;
+    @include flexbox(space-between, center, row, wrap);
+  }
+  &-copyright {
+    font-family: $secondary-font;
+    font-size: 1.6rem;
+    line-height: 2.8125;
+    color: $text-light-color;
+    &-link {
+      font-family: $primary-font;
+      color: $white-color;
+    }
+    &-link:hover {
+      color: $primary-color;
+    }
+  }
+  &-social {
+    @include flexbox(center, center);
+    &-item {
+      &:not(:first-child) {
+        margin-left: 1rem;
+      }
+    }
+    &-link {
+      display: inline-block;
+      padding: 1rem;
+      color: $white-color;
+    }
+    &-link:hover {
+      color: $primary-color;
+    }
+    &-icon {
+      font-size: 1.6rem;
+    }
+  }
+  @include maxWidth(479.98px) {
+    &-inner {
+      display: block;
+      text-align: center;
+    }
+    &-social-item:not(:first-child) {
+      margin-left: 2rem;
+    }
+  }
+}

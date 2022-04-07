@@ -1,0 +1,17 @@
+header.header
+  .container
+    nav.header-navbar
+      a.header-logo(href="index.html")  
+        h1.header-brand advocatus
+      ul.header-nav
+        +headerNavItem({ itemName: "about us", href: "#about"})
+        +headerNavItem({ itemName: "practice area", href: "#practice"})
+        +headerNavItem({ itemName: "lawyers", href: "#attorney"})
+        +headerNavItem({ itemName: "publications", href: "#publication"})
+        +headerNavItem({ itemName: "faq", href: "#faq"})
+        +headerNavItem({ itemName: "contact", href: "#contact"})
+        li.header-close
+          i.fas.fa-times.header-close-icon
+      .header-toggle
+        i.fas.fa-bars.header-toggle-icon
+  .header-overlay
