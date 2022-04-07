@@ -7,18 +7,18 @@
   z-index: 99999;
   overflow: hidden;
   background: $white-color;
-}
-
-.preloader:before {
-  content: "";
-  @include size(6rem);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  border: 6px solid $primary-color;
-  border-top-color: $border-color;
-  border-radius: 50%;
-  animation: animate-preloader 1s linear infinite;
+  &::before {
+    --size: 6rem;
+    content: "";
+    @include size(var(--size));
+    position: fixed;
+    top: calc(50% - var(--size) / 2);
+    left: calc(50% - var(--size) / 2);
+    border: 6px solid $primary-color;
+    border-top-color: $border-color;
+    border-radius: 50%;
+    animation: animate-preloader 1s linear infinite;
+  }
 }
 
 @keyframes animate-preloader {
