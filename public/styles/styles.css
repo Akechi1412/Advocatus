@@ -115,19 +115,20 @@ img {
   z-index: 99999;
   overflow: hidden;
   background: #ffffff; }
-  .preloader::before {
-    --size: 6rem;
-    content: "";
+  .preloader-arc {
+    --size: 6.4rem;
     width: var(--size);
     height: var(--size);
-    position: fixed;
+    border: 6px solid #e8bf5d;
+    border-color: #e8bf5d transparent transparent transparent;
+    border-radius: 50%;
+    position: absolute;
     top: calc(50% - var(--size) / 2);
     left: calc(50% - var(--size) / 2);
-    border: 6px solid #e8bf5d;
-    border-top-color: #d6d6d6;
-    border-radius: 50%;
-    -webkit-animation: animate-preloader 1s linear infinite;
-    animation: animate-preloader 1s linear infinite; }
+    -webkit-animation: animate-preloader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: animate-preloader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    -webkit-animation-delay: calc(-0.15s * var(--value));
+    animation-delay: calc(-0.15s * var(--value)); }
 
 @-webkit-keyframes animate-preloader {
   0% {
